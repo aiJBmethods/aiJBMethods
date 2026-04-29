@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JB Selector</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 260px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .option {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 12px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.6);
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .option.selected {
+      border: 1px solid #4a90e2;
+      background: rgba(74,144,226,0.15);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      background: #4a90e2;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #357abd;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Select JB</h2>
+
+  <div class="option" onclick="selectOption(this, 'JB1.txt')">JB1</div>
+  <div class="option" onclick="selectOption(this, 'JB2.txt')">JB2</div>
+  <div class="option" onclick="selectOption(this, 'JB3.txt')">JB3</div>
+  <div class="option" onclick="selectOption(this, 'JB4.txt')">JB4</div>
+
+  <button onclick="goToFile()">Open</button>
+</div>
+
+<script>
+  let selectedFile = null;
+
+  function selectOption(el, file) {
+    document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedFile = file;
+  }
+
+  function goToFile() {
+    if (selectedFile) {
+      window.location.href = selectedFile;
+    } else {
+      alert("Please select an option first.");
+    }
+  }
+</script>
+
+</body>
+</html>
